@@ -2,32 +2,31 @@
 language: dart
 filename: learndart.dart
 contributors:
-    - ["Joao Pedrosa", "https://github.com/jpedrosa/"]
+    - ["Joao Pedrosa", "https://github.com/jpedrosa"]
 translator:
     - ["Andrew Kachanov", "https://github.com/comerc"]
 filename: learndart-ru.dart
 lang: ru-ru
 ---
 
-Dart is a newcomer into the realm of programming languages.
-It borrows a lot from other mainstream languages, having as a goal not to deviate too much from
-its JavaScript sibling. Like JavaScript, Dart aims for great browser integration.
+Dart — новичок в мире языков программирования.
+Он много заимствует из других основных языков, имея целью не слишком сильно отклоняться от
+родственного JavaScript. Как и JavaScript, Dart стремится к отличной интеграции с браузером.
 
-Dart's most controversial feature must be its Optional Typing.
-
+Наиболее спорная особенность Dart — опциональная типизация.
 ```dart
 import "dart:collection";
 import "dart:math" as DM;
 
-// Welcome to Learn Dart in 15 minutes. http://www.dartlang.org/
-// This is an executable tutorial. You can run it with Dart or on
-// the Try Dart! site if you copy/paste it there. http://try.dartlang.org/
+// Добро пожаловать в "Изучите Dart за 15 минут". http://www.dartlang.org/
+// Это исполняемый учебник. Запустите этот файл в Dart или на 
+// сайте "Try Dart!" через копипасту содержимого. http://try.dartlang.org/
 
-// Function declaration and method declaration look the same. Function
-// declarations can be nested. The declaration takes the form of
+// Объявление функции и объявление метода выглядят одинаково. 
+// Объявление функции может быть вложенным. Декларация принимает форму
 // name() {} or name() => singleLineExpression;
-// The fat arrow function declaration has an implicit return for the result of
-// the expression.
+// Декларация функции в виде жирной стрелки имеет неявный возврат 
+// результата для выражения.
 example1() {
   nested1() {
     nested2() => print("Example1 nested 1 nested 2");
@@ -36,7 +35,7 @@ example1() {
   nested1();
 }
 
-// Anonymous functions don't include a name.
+// Анонимные функции без имени.
 example2() {
   nested1(fn) {
     fn();
@@ -44,21 +43,21 @@ example2() {
   nested1(() => print("Example2 nested 1"));
 }
 
-// When a function parameter is declared, the declaration can include the
-// number of parameters the function takes by specifying the names of the
-// parameters it takes.
+// Когда объявлен параметр в виде функции, то объявление может включать 
+// параметры, которые принимает эта функция, если указать имена параметров, 
+// которые она принимает.
 example3() {
   planA(fn(informSomething)) {
     fn("Example3 plan A");
   }
-  planB(fn) { // Or don't declare number of parameters.
+  planB(fn) { // Или не декларирует параметры.
     fn("Example3 plan B");
   }
   planA((s) => print(s));
   planB((s) => print(s));
 }
 
-// Functions have closure access to outer variables.
+// Функции замыкают внешние переменные.
 var example4Something = "Example4 nested 1";
 example4() {
   nested1(fn(informSomething)) {
@@ -67,8 +66,8 @@ example4() {
   nested1((s) => print(s));
 }
 
-// Class declaration with a sayIt method, which also has closure access
-// to the outer variable as though it were a function as seen before.
+// Декларация класса с методом sayIt так же замыкает внешние переменные,
+// как если бы это была функция, как показано ранее.
 var example5method = "Example5 sayIt";
 class Example5Class {
   sayIt() {
@@ -76,14 +75,14 @@ class Example5Class {
   }
 }
 example5() {
-  // Create an anonymous instance of the Example5Class and call the sayIt
-  // method on it.
+  // Создаёт анонимный экземпляр класса Example5Class и вызывает 
+  // его метод sayIt.
   new Example5Class().sayIt();
 }
 
-// Class declaration takes the form of class name { [classBody] }.
-// Where classBody can include instance methods and variables, but also
-// class methods and variables.
+// Объявление класса принимает форму имени класса {[classBody]}. 
+// Где classBody может включать методы и переменные экземпляра, 
+// а также методы и переменные класса.
 class Example6Class {
   var instanceVariable = "Example6 instance variable";
   sayIt() {
@@ -94,7 +93,7 @@ example6() {
   new Example6Class().sayIt();
 }
 
-// Class methods and variables are declared with "static" terms.
+// Методы и переменные класса объявляются со "статическими" терминами.
 class Example7Class {
   static var classVariable = "Example7 class variable";
   static sayItFromClass() {
@@ -109,11 +108,11 @@ example7() {
   new Example7Class().sayItFromInstance();
 }
 
-// Literals are great, but there's a restriction for what literals can be
-// outside of function/method bodies. Literals on the outer scope of class
-// or outside of class have to be constant. Strings and numbers are constant
-// by default. But arrays and maps are not. They can be made constant by
-// declaring them "const".
+// Литералы великолепны, но есть ограничение на то, что литералы могут быть
+// вне тела функций / методов. Литералы должны быть постоянными во внешней 
+// области видимости класса или за его пределами. Строки и числа являются 
+// постоянными по умолчанию. Но массивы и карты - нет. Они могут быть сделаны 
+// постоянными, если объявить их с помощью "const".
 var example8Array = const ["Example8 const array"],
   example8Map = const {"someKey": "Example8 const map"};
 example8() {
@@ -121,9 +120,10 @@ example8() {
   print(example8Map["someKey"]);
 }
 
-// Loops in Dart take the form of standard for () {} or while () {} loops,
-// slightly more modern for (.. in ..) {}, or functional callbacks with many
-// supported features, starting with forEach.
+// Циклы в Dart принимают форму стандартных циклов for () {}, 
+// или циклов while () {}, немного более современных для (.. in ..) {}, 
+// или функциональных обратных вызовов со многими поддерживаемыми функциями, 
+// начиная с forEach.
 var example9Array = const ["a", "b"];
 example9() {
   for (var i = 0; i < example9Array.length; i++) {
@@ -140,7 +140,7 @@ example9() {
   example9Array.forEach((e) => print("Example9 forEach loop '${e}'"));
 }
 
-// To loop over the characters of a string or to extract a substring.
+// Чтобы пройти по циклу из символов строки или извлечь подстроку.
 var example10String = "ab";
 example10() {
   for (var i = 0; i < example10String.length; i++) {
@@ -151,14 +151,14 @@ example10() {
   }
 }
 
-// Int and double are the two supported number formats.
+// Int и double - это два поддерживаемых числовых формата.
 example11() {
   var i = 1 + 320, d = 3.2 + 0.01;
   print("Example11 int ${i}");
   print("Example11 double ${d}");
 }
 
-// DateTime provides date/time arithmetic.
+// DateTime предоставляет арифметику даты / времени.
 example12() {
   var now = new DateTime.now();
   print("Example12 now '${now}'");
@@ -166,7 +166,7 @@ example12() {
   print("Example12 tomorrow '${now}'");
 }
 
-// Regular expressions are supported.
+// Регулярные выражения.
 example13() {
   var s1 = "some string", s2 = "some", re = new RegExp("^s.+?g\$");
   match(s) {
@@ -180,7 +180,7 @@ example13() {
   match(s2);
 }
 
-// Boolean expressions support implicit conversions and dynamic type
+// Логические выражения поддерживают неявные преобразования и динамический тип
 example14() {
   var a = true;
   if (a) {
@@ -190,11 +190,11 @@ example14() {
   if (a) {
     print("true, a is $a");
   } else {
-    print("false, a is $a"); // runs here
+    print("false, a is $a"); // выполнит это
   }
 
-  // dynamic typed null can be convert to bool
-  var b;// b is dynamic type
+  // динамический тип null преоразуется к bool
+  var b; // b - динамический тип
   b = "abc";
   try {
     if (b) {
@@ -203,16 +203,16 @@ example14() {
       print("false, b is $b");
     }
   } catch (e) {
-    print("error, b is $b"); // this could be run but got error
+    print("error, b is $b"); // это может быть выполнено, но есть ошибка
   }
   b = null;
   if (b) {
     print("true, b is $b");
   } else {
-    print("false, b is $b"); // runs here
+    print("false, b is $b"); // выполнит это
   }
 
-  // statically typed null can not be convert to bool
+  // статически типизированный ноль не может быть преобразован в bool
   var c = "abc";
   c = null;
   // complie failed
